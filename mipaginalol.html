@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Ventas</title>
+    <style>
+        /* Estilos del menú */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-item {
+            margin: 0 20px;
+        }
+
+            .menu-item a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+            }
+
+                .menu-item a:hover {
+                    color: #FFEB3B;
+                }
+
+        /* Estilos para las secciones */
+        section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        canvas {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="menu-item"><a href="#ventas">Ventas</a></li>
+                <li class="menu-item"><a href="#nosotros">Nosotros</a></li>
+                <li class="menu-item"><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de Ventas -->
+    <section id="ventas">
+        <h2>Ventas de los vendedores</h2>
+        <canvas id="salesChart"></canvas>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros">
+        <h3>Informacion sobre nosotros</h3>
+        <p>Somos una empresa dedicada a la venta de calzados de mujer y varon.</p>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Email: calzadosunicos@gmail.com</p>
+        <p>Teléfono: +51 932 839 212</p>
+    </section>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const ctx = document.getElementById('salesChart').getContext('2d');
+      const salesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Juan', 'Pedro', 'Alex'],
+          datasets: [{
+            label: '% de Ventas',
+            data: [40, 35, 25],
+            backgroundColor: ['red', 'blue', 'green']
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { display: false }, // Oculta los números del eje Y
+              grid: { display: false }   // Oculta las líneas de la cuadrícula
+            },
+            x: {
+              grid: { display: false }   // Oculta las líneas de la cuadrícula del eje X
+            }
+          },
+          animation: {
+            duration: 1500,
+            easing: 'easeOutBounce'      // Efecto de rebote para las barras
+          },
+          plugins: {
+            tooltip: { enabled: false }  // Desactiva los tooltips al pasar el mouse
+          }
+        } 
+      });
+    });
+    </script>
+
+</body>
+</html>
